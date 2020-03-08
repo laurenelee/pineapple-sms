@@ -1,0 +1,162 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Write Message</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/multiselect.min.js' %}"></script>
+  </head>
+  <body>
+    <section class="section">
+      <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+              </span>
+              <span>Message</span>
+            </a>
+          </li>
+          <li class="is-active">
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-user-friends" aria-hidden="true"></i>
+              </span>
+              <span>Who to Send</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+              </span>
+              <span>Confirm</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <section class="section">
+      <div class="field has-addons has-addons-right">
+        <p class="control is-expanded has-icons-left">
+          <input class="input" type="text" placeholder="zip code" />
+          <span class="icon is-small is-left">
+            <i class="fas fa-globe"></i>
+          </span>
+        </p>
+
+        <div class="control has-icons-left">
+          <div class="select">
+            <select>
+              <option selected>Miles</option>
+              <option>25</option>
+              <option>50</option>
+              <option>75</option>
+              <option>100</option>
+            </select>
+          </div>
+          <div class="icon is-small is-left">
+            <i class="fas fa-drafting-compass"></i>
+          </div>
+        </div>
+
+        <p class="control">
+          <button class="button is-primary">
+            <span class="icon is-small">
+              <i class="fas fa-user-friends"></i>
+            </span>
+            <span>Add</span>
+          </button>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <div class="select is-multiple is-fullwidth">
+            <select name="from[]" id="search" size="8" multiple>
+              <option value="1">Item 1</option>
+              <option value="2">Item 5</option>
+              <option value="2">Item 2</option>
+              <option value="2">Item 4</option>
+              <option value="3">Item 3</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="column is-one-fifth">
+          <p>
+            <button type="button" id="search_rightAll" class="button">
+              <i class="fas fa-angle-double-right"></i>
+            </button>
+          </p>
+          <p>
+            <button type="button" id="search_rightSelected" class="button">
+              <i class="fas fa-angle-right"></i>
+            </button>
+          </p>
+          <p>
+            <button type="button" id="search_leftSelected" class="button">
+              <i class="fas fa-angle-left"></i>
+            </button>
+          </p>
+          <p>
+            <button type="button" id="search_leftAll" class="button">
+              <i class="fas fa-angle-double-left"></i>
+            </button>
+          </p>
+        </div>
+
+        <div class="column is-two-fifths">
+          <div class="select is-multiple is-fullwidth">
+            <select
+              name="to[]"
+              id="search_to"
+              class=""
+              size="8"
+              multiple
+            ></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons has-addons is-right">
+        <button class="button">
+          Next
+        </button>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $("#search").multiselect({
+          search: {
+            left:
+              '<input type="text" name="q" class="input" placeholder="Search..." />',
+            right:
+              '<input type="text" name="q" class="input" placeholder="Search..." />'
+          },
+          fireSearch: function(value) {
+            return value.length > 0;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
